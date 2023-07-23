@@ -1,0 +1,59 @@
+* {
+	box-sizing: border-box;
+}
+html, body, p {
+	margin: 0;
+	padding: 0;
+}
+body {
+	background: #333;
+  color: #f4f8fa;
+  font-size: 16px;
+  font-family: Helvetica,sans-serif;
+}
+header {
+	font-size: 24px;
+	line-height: 40px;
+	text-align: center;
+  background-color: #171819;
+}
+main img {
+	width: 20rem;
+	position: absolute;
+	top: 68px;
+	right: 4rem;
+}
+section {
+	margin: 2rem auto;
+	border: 1px solid #e5e7e966;
+	padding: 2rem;
+	width: 40rem;
+}
+section div {
+	padding: 1rem 4rem;
+}
+section label {
+	display: inline-block;
+  width: 10rem;
+}
+section input {
+	font-size: 16px;
+	line-height: 26px;
+	color: #333;
+}
+section select {
+	font-size: 16px;
+	line-height: 26px;
+	color: #333;
+	background-color: #fbfcfd;
+	width: 6rem;
+	height: 26px;
+	border: 1px solid transparent;
+}
+section button {
+	border-radius: 3px;
+	background-color: #f2f4f6;
+	padding: 0 4rem;
+	font-size: 16px;
+	line-height: 26px;
+}

@@ -3,6 +3,7 @@ require 'time'
 require 'json'
 require 'diode/request'
 require 'diode/response'
+require 'diode/static'
 
 module Diode
 

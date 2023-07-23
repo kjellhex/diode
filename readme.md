@@ -38,7 +38,9 @@ Diode::Server.new(3999, routing).start
 # visit http://localhost:3999/
 ```
 
-Please see the [project documentation](https://github.com/kjellhex/diode/wiki) for more details.
+## Documentation
+
+Please see the [wiki](https://github.com/kjellhex/diode/wiki) for more details.
 
 ## Contributing
 

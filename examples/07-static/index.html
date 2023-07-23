@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>Demonstration of Diode::Static</title>
+	<link rel="icon" type="image/x-icon" href="favicon.ico">
+	<link rel="stylesheet" href="site.css"/>
+	<script type="application/javascript" src="site.js"></script>
+</head>
+<body>
+<header>Demonstration of Diode::Static</header>
+<main>
+	<img src="img/various.jpg"/>
+	<section>
+		<div>
+			<label for="cid">Currency ID:</label>
+			<select id="cid" onchange="populate()">
+				<option value="1">RUB</option>
+			</select>
+		</div>
+		<div>
+			<label for="name">Name:</label>
+			<input type="text" id="name"/>
+		</div>
+		<div>
+			<label for="iso">ISO Code:</label>
+			<input type="text" id="iso"/>
+		</div>
+		<div>
+			<label for="price">Latest price:</label>
+			<input type="text" id="price"/>
+		</div>
+		<div>
+			<label>&#160;</label>
+			<button onclick="saveDetails()">Save</button>
+		</div>
+	</section>
+</main>
+<script type="application/javascript">
+	fetchList();
+</script>
+</body>
+</html>
