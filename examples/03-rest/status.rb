@@ -8,7 +8,7 @@ class Status
 
   def get(request)
     h = { "operationalStatus": @@operationalStatus.to_s() }
-    h["category"] = request["category"] if request.params["extra"].to_s == "true"
+    h["category"] = request[:category] if request.params["extra"].to_s == "true"
     Diode::Response.new(200, JSON.dump(h), {"Cache-Control" => "no-cache"})
   end
 
