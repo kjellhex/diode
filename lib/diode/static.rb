@@ -1,5 +1,7 @@
 require 'pathname'
 
+module Diode
+
 class Static
 
   def initialize(docRoot=".")
@@ -57,4 +59,5 @@ class Static
     @@mimetypes
   end
 
+end
 end
