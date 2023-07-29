@@ -4,6 +4,8 @@
 
 Diode lets you quickly build a fast, simple, pure-ruby application server.
 
+<img src="https://badge.fury.io/rb/diode.svg" alt="Gem Version" height="18">
+
 ## Installation
 
 Add this line to your application's Gemfile:
