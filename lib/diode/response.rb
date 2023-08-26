@@ -29,6 +29,12 @@ class Response
 		new(code, body, h)
 	end
 
+	def self.xml(code, body="", headers={})
+		resp = Response.new(code, body, headers)
+		resp.headers["Content-Type"] = "application/xml"
+		return resp
+	end
+
 	attr_accessor(:code, :body, :headers)
 
 	def initialize(code, body="", headers={})
