@@ -50,11 +50,12 @@ class Request
       headerline, sep, msg = msg.partition("\r\n")
       while not headerline.strip.empty?
         key, value = headerline.strip.split(': ')
+        key = key.strip.downcase().split(/\b/).collect{|e| e[0].upcase + e[1..-1].downcase}.join("") # title case
+        raise(Diode::RequestError.new(400, "duplicate header '#{key}'")) if headers.keys.include?(key)
         @headers[key] = value
         headerline, sep, msg = msg.partition("\r\n")
       end
-    rescue EOFError
-      # tolerate missing \r\n at end of request
+    rescue EOFError # tolerate missing \r\n at end of request
     end
     @cookies = {}
     if @headers.key?("Cookie")

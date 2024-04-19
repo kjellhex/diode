@@ -11,8 +11,8 @@ class Static
 
   def serve(request)
     return Diode::Response.new(405, "Method not allowed", {"Content-type" => "text/plain"}) unless request.method == "GET"
-    path = Pathname.new(request.path).cleanpath.sub(request.pattern, "")  # remove the leading portion matching the mount pattern
-    filepath = Pathname.new(File.expand_path(path, @root))
+    path = Pathname.new(request.path).cleanpath().to_s()
+    filepath = Pathname.new(File.expand_path(@root.to_s() + path))
     filepath = Pathname.new(File.expand_path("index.html", filepath)) if filepath.directory?
     return Diode::Response.new(404, "<html><body>File not found</body></html>", {"Content-type" => "text/html"}) unless filepath.exist?
     mimetype = @@mimetypes[filepath.extname[1..-1]] || "application/octet-stream"
