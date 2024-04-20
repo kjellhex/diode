@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = "diode"
-  s.version     = "1.3.1"
+  s.version     = "1.3.3"
   s.summary     = "A fast, simple, pure-ruby application server."
   s.description = "Diode helps you to build REST application servers by providing a container for your servlets.
   About as simple as rack but more powerful, and nowhere near as complex as passenger, Diode has only four classes

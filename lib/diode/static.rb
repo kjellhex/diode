@@ -4,17 +4,26 @@ module Diode
 
 class Static
 
-  def initialize(docRoot=".")
+  def initialize(docRoot=".", guardian=nil)
     @root = Pathname.new(Pathname.new(docRoot).cleanpath()).realpath()
     raise("Cannot serve static files from path #{@root}") unless @root.directory? and @root.readable?
+    @guardian = guardian
   end
 
   def serve(request)
-    return Diode::Response.new(405, "Method not allowed", {"Content-type" => "text/plain"}) unless request.method == "GET"
+    return Diode::Response.standard(405) unless request.method == "GET"
+    unless @guardian.nil?
+      securityResponse = @guardian.call(request)
+      unless securityResponse.nil? or securityResponse == 200
+        return securityResponse if securityResponse.is_a?(Diode::Response)
+        return Diode::Response.standard(securityResponse) if [400,403,404,405].include?(securityResponse)
+        raise("result of guardian block must be a Diode::Response or one of 400,403,404,405 to deny or else nil to allow") # guardian should log details
+      end
+    end
     path = Pathname.new(request.path).cleanpath().to_s()
     filepath = Pathname.new(File.expand_path(@root.to_s() + path))
     filepath = Pathname.new(File.expand_path("index.html", filepath)) if filepath.directory?
-    return Diode::Response.new(404, "<html><body>File not found</body></html>", {"Content-type" => "text/html"}) unless filepath.exist?
+    return Diode::Response.standard(404) unless filepath.exist?
     mimetype = @@mimetypes[filepath.extname[1..-1]] || "application/octet-stream"
     return Diode::Response.new(200, IO.read(filepath.to_s).b, {"Content-Type"=>mimetype, "Cache-Control" => "no-cache"})
   end

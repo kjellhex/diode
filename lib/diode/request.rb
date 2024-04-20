@@ -14,6 +14,9 @@ class RequestError < StandardError
 end
 
 class SecurityError < StandardError
+  def code()
+    403
+  end
 end
 
 class Request
